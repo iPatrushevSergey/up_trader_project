@@ -18,7 +18,11 @@
     <meta name="application-name" content="UpTrader">
 
     <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
-    <title>UpTrader: The business has already chosen us. And what is your choice?</title>
+    <title>
+      {% block title %}
+        No name
+      {% endblock title %}
+    </title>
   </head>
   <body>       
     <header>
