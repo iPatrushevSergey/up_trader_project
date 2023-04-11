@@ -2,11 +2,13 @@ from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = 'django-insecure-=py5)t+ujke)uugndh5tsds##9+710#2!i1w_*6qlh6xjk&idt'
+SECRET_KEY = (
+    'django-insecure-=py5)t+ujke)uugndh5tsds##9+710#2!i1w_*6qlh6xjk&idt'
+)
 
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -30,10 +32,13 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'up_trader_project.urls'
 
+TEMPLATES_DIR = BASE_DIR.joinpath('templates')
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            TEMPLATES_DIR,
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -44,6 +49,10 @@ TEMPLATES = [
             ],
         },
     },
+]
+
+STATICFILES_DIRS = [
+    BASE_DIR.joinpath('static'),
 ]
 
 WSGI_APPLICATION = 'up_trader_project.wsgi.application'
