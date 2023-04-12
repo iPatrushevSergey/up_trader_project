@@ -5,10 +5,14 @@ class Menu(models.Model):
     """
     Initializes the menu object.
     """
-    name = models.CharField(
-        max_length=256,
+    title = models.CharField(
+        max_length=255,
         unique=True,
-        verbose_name='Menu name',
+        verbose_name='Menu title',
+    )
+    slug = models.SlugField(
+        max_length=255,
+        verbose_name='Menu slug',
     )
 
     class Meta:
@@ -22,7 +26,7 @@ class Menu(models.Model):
         """
         Displays the name of the menu when accessing an instance of the class.
         """
-        return self.name
+        return self.title
 
 
 class Item(models.Model):
@@ -30,8 +34,12 @@ class Item(models.Model):
     Initializes the menu object.
     """
     name = models.CharField(
-        max_length=256,
+        max_length=255,
         verbose_name='Item name',
+    )
+    slug = models.SlugField(
+        max_length=255,
+        verbose_name='Item slug',
     )
     menu = models.ForeignKey(
         Menu,

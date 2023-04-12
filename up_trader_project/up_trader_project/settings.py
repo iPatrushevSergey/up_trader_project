@@ -20,7 +20,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'tree_menu.apps.TreeMenuConfig',
-    'core.apps.CoreConfig',
 ]
 
 MIDDLEWARE = [
@@ -35,13 +34,10 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'up_trader_project.urls'
 
-TEMPLATES_DIR = BASE_DIR.joinpath('templates')
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [
-            TEMPLATES_DIR,
-        ],
+        'DIRS': [],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -52,10 +48,6 @@ TEMPLATES = [
             ],
         },
     },
-]
-
-STATICFILES_DIRS = [
-    BASE_DIR.joinpath('static'),
 ]
 
 WSGI_APPLICATION = 'up_trader_project.wsgi.application'
@@ -91,5 +83,7 @@ USE_I18N = True
 USE_TZ = True
 
 STATIC_URL = 'static/'
+STATIC_ROOT = BASE_DIR.joinpath('static')
+STATICFILES_DIRS = []
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

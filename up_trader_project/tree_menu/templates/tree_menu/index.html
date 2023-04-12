@@ -1,7 +1,8 @@
-{% extends 'base.html' %}
+{% extends 'tree_menu/base.html' %}
+{% load draw_menu %}
 {% block title%}
   UpTrader: The business has already chosen us. And what is your choice?
 {% endblock title %}
 {% block content %}
-  {{ text }}
+  {% show_test_menu %}
 {% endblock content %} 
