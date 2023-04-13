@@ -4,10 +4,8 @@
       <li><a href="{% url 'tree_menu:slug' item.slug %}">{{ item.name }}</a></li>
       {% if slug == menu %}
         <!-- continue -->
-      {% else %}
-        {% with parent=item %}
-        <div class="ps-5">{% include 'tree_menu/template_tags/submenu.html' with parent=parent items=items button=item.slug%}</div>
-        {% endwith %}
+      {% elif slug == item.name %}
+        <div class="ps-5">{% include 'tree_menu/template_tags/submenu.html' with parent=item items=items button=slug%}</div>
       {% endif %}
     {% endif %}
   {% endfor %}
