@@ -7,4 +7,5 @@ app_name = 'tree_menu'
 
 urlpatterns = [
     path('', index, name='main'),
+    path('<slug:slug>/', index, name='slug'),
 ]

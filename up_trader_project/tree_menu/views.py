@@ -3,10 +3,13 @@ from django.http import HttpResponse, HttpResponseNotFound
 from django.shortcuts import render
 from django.urls.exceptions import Resolver404
 
+from tree_menu.models import Menu
 
-def index(request: WSGIRequest) -> HttpResponse:
+
+def index(request: WSGIRequest, *args, **kwargs) -> HttpResponse:
     template = 'tree_menu/index.html'
-    context = {'text': 'Tree menu home page'}
+    menus = Menu.objects.all()
+    context = {'menus': menus, 'slug': kwargs.get('slug')}
     return render(request, template, context)
 
 

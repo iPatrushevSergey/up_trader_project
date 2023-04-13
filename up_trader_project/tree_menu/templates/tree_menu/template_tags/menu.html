@@ -1,0 +1,14 @@
+{% if items %}
+  {% for item in items %}
+    {% if not item.parent %}
+      <li><a href="{% url 'tree_menu:slug' item.slug %}">{{ item.name }}</a></li>
+      {% if slug == menu %}
+        <!-- continue -->
+      {% else %}
+        {% with parent=item %}
+        <div class="ps-5">{% include 'tree_menu/template_tags/submenu.html' with parent=parent items=items button=item.slug%}</div>
+        {% endwith %}
+      {% endif %}
+    {% endif %}
+  {% endfor %}
+{% endif %}

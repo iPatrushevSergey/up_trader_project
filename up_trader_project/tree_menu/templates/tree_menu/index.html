@@ -1,8 +1,17 @@
 {% extends 'tree_menu/base.html' %}
-{% load draw_menu %}
+{% load tree_menu %}
 {% block title%}
   UpTrader: The business has already chosen us. And what is your choice?
 {% endblock title %}
 {% block content %}
-  {% show_test_menu %}
+  <div class="container">
+    {% if menus %}
+      {% for menu in menus %}
+        <li><a href="{% url 'tree_menu:slug' menu.slug %}">{{ menu.title }}</a></li>
+        {% comment %} {% if slug == menu.title %} {% endcomment %}
+        <div class="ps-5">{% draw_menu menu.title %}</div>
+        {% comment %} {% endif %} {% endcomment %}
+      {% endfor %}
+    {% endif %}
+  </div>
 {% endblock content %} 
