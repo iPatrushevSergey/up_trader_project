@@ -1,14 +1,17 @@
-{% if parent %}
-  {% if items %}
-    {% for item in items %}
-      {% if item.parent == parent %}
-        <li><a href="{% url 'tree_menu:slug' item.slug %}">{{ item.name }}</a></li>
-        {% if slug == button %}
-            <!-- continue -->
-        {% elif slug == item.name %}
-          <div class="ps-5">{% include 'tree_menu/template_tags/submenu.html' with parent=item items=items button=slug%}</div>
-        {% endif %}
+{% comment %} {% if items %}
+  {% for item in items %}
+    {% if item.parent.title == parent %}
+      <li>
+        <a href="{% url 'tree_menu:slug' item.slug %}">
+          {{ item.title }}
+        </a>
+      </li>
+      {% if slug == button %}
+        {% with test=item %}
+        {% endwith %}
+      {% elif slug == item.title %}
+        <div class="ps-5">{% include 'tree_menu/template_tags/submenu.html' with parent=item.title items=items button=slug%}</div>
       {% endif %}
-    {% endfor %}
-  {% endif %}
-{% endif %}
+    {% endif %}
+  {% endfor %}
+{% endif %} {% endcomment %}

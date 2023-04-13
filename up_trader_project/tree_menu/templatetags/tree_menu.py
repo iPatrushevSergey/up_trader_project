@@ -15,7 +15,9 @@ register = template.Library()
 def draw_menu(context, menu):
     slug = context.get('slug')
     if slug:
-        items = Item.objects.select_related('menu', 'parent').filter(menu__title=menu).all()
+        items = Item.objects.select_related('parent').filter(menu__title=menu).all()
+        print(items)
     else:
         items = None
-    return {'menu': menu, 'slug': slug, 'items': items}
+    print(slug, 'TEMPLATE TAG')
+    return {'parent': menu, 'button': menu, 'slug': slug, 'items': items}
