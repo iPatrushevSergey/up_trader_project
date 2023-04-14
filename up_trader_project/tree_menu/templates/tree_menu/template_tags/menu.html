@@ -8,9 +8,10 @@
       </li>
       {% if slug == button %}
         <!-- continue -->
-      {% comment %} {% if slug == item.slug %} {% endcomment %}
-      {% else %}
-        <div class="ps-5">{% include 'tree_menu/template_tags/menu.html' with items=items slug=slug parent=item.title button=item.slug%}</div>
+      {% elif item.title in path %}
+        <div class="ps-5">
+          {% include 'tree_menu/template_tags/menu.html' with items=items slug=slug parent=item.title button=item.slug %}
+        </div>
       {% endif %}
     {% endif %}
   {% endfor %}
