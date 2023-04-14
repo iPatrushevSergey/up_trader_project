@@ -10,7 +10,6 @@ def index(request: WSGIRequest, *args, **kwargs) -> HttpResponse:
     template = 'tree_menu/index.html'
     menus = Item.objects.filter(is_menu=True).all()
     slug = kwargs.get('slug')
-    print(slug, 'VIEW')
     context = {'menus': menus, 'slug': slug}
     return render(request, template, context)
 
